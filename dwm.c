@@ -411,10 +411,21 @@ arrangemon(Monitor *m)
 }
 
 void
-attach(Client *c)
+attachfront(Client *c)
 {
 	c->next = c->mon->clients;
 	c->mon->clients = c;
+}
+
+void
+attach(Client *c)
+{
+	Client *client = c->mon->clients;
+	for (; client && client->next; client = client->next);
+	if (client)
+		client->next = c;
+	else
+		c->mon->clients = c;
 }
 
 void
@@ -1241,7 +1252,7 @@ void
 pop(Client *c)
 {
 	detach(c);
-	attach(c);
+	attachfront(c);
 	focus(c);
 	arrange(c->mon);
 }
