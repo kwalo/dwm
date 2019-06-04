@@ -13,10 +13,12 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_void[]        = "#478061";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_void,  col_void  },
 };
 
 /* tagging */
@@ -62,7 +64,9 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "st", NULL };
 static const char *slockcmd[]    = { "slock", NULL };
 static const char *webcmd[]      = { "firefox", NULL };
-static const char *mailcmd[]     = { "st", "-e", "mutt", NULL };
+// muttsync is a simple shell script that calls mutt; dt mbsync -H -a
+// Change to mutt, or add this script to PATH
+static const char *mailcmd[]     = { "st", "-e", "muttsync", NULL };
 static const char *setrescmd[]     = { "setres", NULL };
 static const char *openlinkcmd[] = { "/home/kwalo/.local/bin/open-link", NULL };
 static const char *volup[]       = { "amixer", "-q", "set", "Master", "1+", NULL };
