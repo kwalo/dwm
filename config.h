@@ -63,6 +63,8 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "st", NULL };
 static const char *slockcmd[]    = { "slock", NULL };
 static const char *webcmd[]      = { "firefox", NULL };
+static const char *webprvcmd[]      = { "firefox", "--private-window", NULL };
+
 // muttsync is a simple shell script that calls mutt; dt mbsync -H -a
 // Change to mutt, or add this script to PATH
 static const char *mailcmd[]     = { "st", "-e", "muttsync", NULL };
@@ -78,6 +80,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_o,      spawn,          {.v = openlinkcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webprvcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = mailcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = setrescmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
