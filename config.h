@@ -63,13 +63,12 @@ static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]     = { "st", NULL };
 static const char *slockcmd[]    = { "slock", NULL };
 static const char *webcmd[]      = { "firefox", NULL };
-static const char *webprvcmd[]      = { "firefox", "--private-window", NULL };
+static const char *webprvcmd[]   = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
+//static const char *histcmd[]     = { "sh", "-c", "sqlite3 ~/.mozilla/firefox/*.default*/places.sqlite 'select title, url from moz_places order by last_visit_date desc;' | dmenu -l 10 | awk -F '|' '{print $NF}' | xargs firefox"  };
 
 // muttsync is a simple shell script that calls mutt; dt mbsync -H -a
 // Change to mutt, or add this script to PATH
-static const char *mailcmd[]     = { "st", "-e", "muttsync", NULL };
-static const char *setrescmd[]     = { "setres", NULL };
-static const char *openlinkcmd[] = { "/home/kwalo/.local/bin/open-link", NULL };
+static const char *mailcmd[]     = { "st", "-e", "/home/kwalo/.local/bin/muttsync", NULL };
 static const char *volup[]       = { "amixer", "-q", "set", "Master", "1+", NULL };
 static const char *voldown[]     = { "amixer", "-q", "set", "Master", "1-", NULL };
 static const char *volmute[]     = { "amixer", "-q",  "set", "Master", "toggle", NULL };
@@ -78,11 +77,10 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_o,      spawn,          {.v = openlinkcmd } },
+	//{ MODKEY,                       XK_o,      spawn,          {.v = histcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webprvcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = mailcmd } },
-	{ MODKEY,                       XK_r,      spawn,          {.v = setrescmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
