@@ -59,16 +59,19 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *slockcmd[]    = { "slock", NULL };
-static const char *webcmd[]      = { "firefox", NULL };
-static const char *webprvcmd[]   = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
-static const char *mailcmd[]     = { "st", "-e","mutt", NULL };
-static const char *volup[]       = { "amixer", "-q", "set", "Master", "1+", NULL };
-static const char *voldown[]     = { "amixer", "-q", "set", "Master", "1-", NULL };
-static const char *volmute[]     = { "amixer", "-q",  "set", "Master", "toggle", NULL };
+static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]        = { "st", NULL };
+static const char *slockcmd[]       = { "slock", NULL };
+static const char *webcmd[]         = { "firefox", NULL };
+static const char *webprvcmd[]      = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
+static const char *mailcmd[]        = { "st", "-e","mutt", NULL };
+static const char *volup[]          = { "amixer", "-q", "set", "Master", "1+", NULL };
+static const char *voldown[]        = { "amixer", "-q", "set", "Master", "1-", NULL };
+static const char *volmute[]        = { "amixer", "-q",  "set", "Master", "toggle", NULL };
+static const char *pctl_playpause[] = { "playerctl", "play-pause", NULL };
+static const char *pctl_next[]      = { "playerctl", "next", NULL };
+static const char *pctl_previous[]  = { "playerctl", "previous", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -112,6 +115,9 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn, {.v = volup} },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn, {.v = voldown} },
 	{ 0,                            XF86XK_AudioMute,           spawn, {.v = volmute} },
+	{ 0,                            XF86XK_AudioPlay,           spawn, {.v = pctl_playpause} },
+	{ 0,                            XF86XK_AudioNext,           spawn, {.v = pctl_next} },
+	{ 0,                            XF86XK_AudioPrev,           spawn, {.v = pctl_previous} },
 };
 
 /* button definitions */
