@@ -68,6 +68,7 @@ static const char *slockcmd[]       = { "slock", NULL };
 static const char *webcmd[]         = { "firefox", NULL };
 static const char *webprvcmd[]      = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
 static const char *mailcmd[]        = { TERM, "-T", "Mutt", "-e","mutt", NULL };
+static const char *openlinkcmd[]    = { "open-link", NULL };
 static const char *volup[]          = { "amixer", "-q", "set", "Master", "1+", NULL };
 static const char *voldown[]        = { "amixer", "-q", "set", "Master", "1-", NULL };
 static const char *volmute[]        = { "amixer", "-q",  "set", "Master", "toggle", NULL };
@@ -82,6 +83,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webprvcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = mailcmd } },
+	{ MODKEY,                       XK_o,      spawn,          {.v = openlinkcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
