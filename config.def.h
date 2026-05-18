@@ -34,7 +34,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -67,11 +67,11 @@ static const char *termcmd[]        = { TERM, NULL };
 static const char *slockcmd[]       = { "slock", NULL };
 static const char *webcmd[]         = { "firefox", NULL };
 static const char *webprvcmd[]      = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
-static const char *mailcmd[]        = { TERM, "-T", "Mutt", "-e","mutt", NULL };
+static const char *mailcmd[]        = { TERM, "-e","mutt", NULL };
 static const char *openlinkcmd[]    = { "open-link", NULL };
-static const char *volup[]          = { "amixer", "-q", "set", "Master", "1+", NULL };
-static const char *voldown[]        = { "amixer", "-q", "set", "Master", "1-", NULL };
-static const char *volmute[]        = { "amixer", "-q",  "set", "Master", "toggle", NULL };
+static const char *volup[]          = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%+", NULL };
+static const char *voldown[]        = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%-", NULL };
+static const char *volmute[]        = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
 static const char *pctl_playpause[] = { "playerctl", "play-pause", NULL };
 static const char *pctl_next[]      = { "playerctl", "next", NULL };
 static const char *pctl_previous[]  = { "playerctl", "previous", NULL };
