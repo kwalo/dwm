@@ -7,10 +7,10 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-	"JetBrains Mono:size=10",
+	"Hack:size=14",
 	"Symbols Nerd Font Mono:size=12"
 };
-static const char dmenufont[]       = "JetBrains Mono:size=10";
+static const char dmenufont[]       = "Hack:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -65,13 +65,14 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char *termcmd[]        = { TERM, NULL };
 static const char *slockcmd[]       = { "slock", NULL };
 static const char *webcmd[]         = { "firefox", NULL };
 static const char *webprvcmd[]      = { "firefox", "--private-window", "https://duckduckgo.com/", NULL };
 static const char *mailcmd[]        = { TERM, "-e","mutt", NULL };
 static const char *openlinkcmd[]    = { "open-link", NULL };
+static const char *desktopcmd[]     = { "desktop-launcher", NULL };
 static const char *volup[]          = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%+", NULL };
 static const char *voldown[]        = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1%-", NULL };
 static const char *volmute[]        = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
@@ -82,6 +83,7 @@ static const char *pctl_previous[]  = { "playerctl", "previous", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = desktopcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = webcmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webprvcmd } },
